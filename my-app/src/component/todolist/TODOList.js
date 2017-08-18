@@ -1,4 +1,7 @@
-import {complete} from "../../action/todo";
+import React, { Component } from 'react';
+import { connect } from 'react-redux';
+import { complete, complete2 } from '../../action/todo';
+import Todo from './TODO';
 
 class TODOList extends Component {
     render() {
@@ -29,6 +32,7 @@ const todolistDispatchToProps = (dispatch) => {
     return {
         onClick(data) {
             dispatch(complete(data)) // 액션 메소드
+            // dispatch(complete2(data))
         }
     }
 };

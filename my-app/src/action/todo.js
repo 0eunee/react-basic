@@ -1,16 +1,37 @@
 // action type(명렁어)
-export const COMPLETE_TODO = 'COMPLETE_TODO';
+const ADD_TODO = 'ADD_TODO'
+const COMPLETE_TODO = 'COMPLETE_TODO'
 
 // action creators(액션 메소드)
-export function complete({complete, id}) {
-    return { type: COMPLETE_TODO, complete, id }
+function addTodo(text) {
+    return { type: ADD_TODO,  text};
 }
 
-// 비동기 작업을 하는 코드
-export function addTodo2(text) {
+function addTodo2(text) {
     return (dispatch) => {
-        return fetch("api/add.json").then(
+        return fetch("api/add.json", {}).then(
             res => res.json().then(data => dispatch(addTodo(data.status)))
         );
     };
+}
+
+function complete({complete, id}) {
+    return { type: COMPLETE_TODO, complete, id }
+}
+
+function complete2(data2) {
+    return (dispatch) => {
+        return fetch("api/add.json").then(
+            res => res.json().then(data => dispatch(complete(data2)))
+        );
+    };
+}
+
+export  {
+    ADD_TODO,
+    COMPLETE_TODO,
+    addTodo,
+    addTodo2,
+    complete,
+    complete2
 }
